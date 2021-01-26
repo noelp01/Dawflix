@@ -217,8 +217,8 @@ class DatabaseSeeder extends Seeder
 		DB::table('categories')->delete();
 
 		$c = new Category;
-        $c->title = 'Comedia';
-		$c->description = 'Quina gràcia jajaj';
+        $c->title = 'Suspens';
+		$c->description = 'No sé que pasarà';
         $c->save();
 	}
 }
