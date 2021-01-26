@@ -181,8 +181,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        self::seedCatalog();
-		$this->call(MovieSeeder::class);
+        //self::seedCatalog();
+		//$this->call(MovieSeeder::class);
 		
 		self::seedUsers();
 		$this->command->info('Tabla usuarios inicializada con datos!');
