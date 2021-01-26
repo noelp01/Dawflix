@@ -181,8 +181,8 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        self::seedCatalog();
-		$this->call(MovieSeeder::class);
+        //self::seedCatalog();
+		//$this->call(MovieSeeder::class);
 		
 		self::seedUsers();
 		$this->command->info('Tabla usuarios inicializada con datos!');
@@ -217,9 +217,8 @@ class DatabaseSeeder extends Seeder
 		DB::table('categories')->delete();
 
 		$c = new Category;
-        $c->title = 'Terror';
-		$c->description = 'Quina por jejeje';
-		$c->adult = true;
+        $c->title = 'Comedia';
+		$c->description = 'Quina gràcia jajaj';
         $c->save();
 	}
 }
