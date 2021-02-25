@@ -15,6 +15,7 @@ class CatalogController extends Controller
         $cercapeli = $request->input("cerca");
         $cercacategories = $request->input("category_id");
         $categories = Category::all();
+        
         if($cercapeli){
             $lespelis = Movie::where('title', 'like', '%'.$cercapeli.'%')->orWhere('director', 'like', '%'.$cercapeli.'%')->get();
         }elseif($cercacategories){

@@ -50,13 +50,18 @@
                             <span>&#10010</span> Nueva película
                         </a>
                     </li>
-                    <li>
-                        <select id="inputState" class="form-control" name="category_id">
-                            <option selected>Escull una categoria</option>
-                            @foreach($categories as $cate)
-                            <option value="{{$cate->id}}">{{$cate->title}}</option>
+                    <li class="nav-item dropdown">
+                        <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                            Selecciona categoria
+                        </a>
+
+                        <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            @foreach($categories as $cate) 
+                            <a class="dropdown-item" href="{{ url('/category/'.$cate->id)}}">
+                                {{$cate->title}}
+                            </a>
                             @endforeach
-                        </select>
+                        </div>
                     </li>
                     </ul>
 
