@@ -22,6 +22,7 @@ class CreateMoviesTable extends Migration
             $table->boolean('rented')->default(false);
             $table->text('synopsis');
             $table->timestamps();
+            $table->foreignId('category_id');
         });
     }
 

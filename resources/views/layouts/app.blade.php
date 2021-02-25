@@ -40,15 +40,32 @@
                             Catálogo
                         </a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{url('/category')}}">
+                            Categorías
+                        </a>
+                    </li>
                     <li class="nav-item {{  Request::is('catalog/create') ? 'active' : ''}}">
                         <a class="nav-link" href="{{url('/catalog/create')}}">
                             <span>&#10010</span> Nueva película
                         </a>
                     </li>
+                    <li>
+                        <select id="inputState" class="form-control" name="category_id">
+                            <option selected>Escull una categoria</option>
+                            @foreach($categories as $cate)
+                            <option value="{{$cate->id}}">{{$cate->title}}</option>
+                            @endforeach
+                        </select>
+                    </li>
                     </ul>
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <form action="{{ url('/catalog')}}" method="GET" class="form-inline my-2 my-lg-0">
+                            <input class="form-control mr-sm-2" name="cerca" type="search" placeholder="Que vols cercar?" aria-label="Search">
+                            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Cerca</button>
+                        </form>
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

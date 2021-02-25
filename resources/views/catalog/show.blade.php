@@ -60,6 +60,7 @@
         <p class="subtu">Any: {{$lespelis1->year}}</p>
         <p class="subtu">Director: {{$lespelis1->director}}</p>
         <p><b>Resumen:</b> {{$lespelis1->synopsis}}</p>
+        <p><b>Categoria:</b> {{$lespelis1->category['title']}}</p>
         <p><b>Estat:</b> @if( $lespelis1->rented ) Pel·lícula actualment alquilada @else Alquilar pel·lícula @endif</p>
 
         <div class="brutones">

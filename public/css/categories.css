@@ -1,0 +1,42 @@
+.crudcate{
+    margin: 130px;
+    margin-top: 100px !important;
+}
+
+.tutul{
+    font-size: 40px;
+}
+
+.tala{
+    text-align: center;
+}
+
+.botu1{
+    width: 80px;
+    color: white !important;
+    background-color: #9954BB !important;
+    border-color: #9954BB !important;
+}
+
+.botu2{
+    width: 80px;
+    color: white !important;
+    background-color: #FF7518 !important;
+    border-color: #FF7518 !important;
+}
+
+.botu3{
+    width: 80px;
+    color: white !important;
+    background-color: #FF0039 !important;
+    border-color: #FF0039 !important;
+}
+
+.botu4{
+    width: 200px;
+    color: white !important;
+    background-color: #3FB618 !important;
+    border-color: #3FB618 !important;
+    margin-bottom: 20px;
+    float: right;
+}

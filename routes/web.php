@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CatalogController;
+use App\Http\Controllers\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -49,6 +50,22 @@ Route::put('/catalog/return/{id}', [CatalogController::class, 'putReturn'])->mid
 Route::delete('/catalog/delete/{id}', [CatalogController::class, 'deleteMovie'])->middleware('auth');
 
 Route::post('/catalog/review/create', [CatalogController::class, 'unaOpinio']);
+
+Route::get('/category', [App\Http\Controllers\CategoryController::class, 'index'])->middleware('auth');
+
+Route::get('/category/create', [CategoryController::class, 'getCreate']);
+
+Route::put('/category/create', [CategoryController::class, 'putCreate']);
+
+Route::post('/category', [CategoryController::class, 'postStore']);
+
+Route::get('/category/{id}', [CategoryController::class, 'getShow']);
+
+Route::get('/category/{id}/edit', [CategoryController::class, 'getEdit']);
+
+Route::put('/category/{id}', [CategoryController::class, 'putUpdate']);
+
+Route::delete('/category/{id}', [CategoryController::class, 'deleteCategory']);
 
 
 

@@ -39,6 +39,16 @@
             </div>
 
             <div class="form-group">
+               <label for="synopsis">Categoria</label>
+               <select id="inputState" class="form-control" name="category_id">
+                  @foreach($categories as $cate)
+                  <option value="{{$cate->id}}" @if ($lespelis2->category['title'] == $cate->title) selected @endif>{{$cate->title}}</option>
+                  @endforeach
+               </select>
+               @error('category_id')<div id="tascaFeedback" class="invalid-feedback">La categoria no pot estar buit!</div>@enderror 
+            </div>
+
+            <div class="form-group">
                <label for="synopsis">Resum</label>
                <textarea name="synopsis" id="synopsis" class="form-control @error('synopsis') is-invalid @enderror" rows="3">{{$lespelis2->synopsis}}</textarea>
                @error('synopsis')<div id="tascaFeedback" class="invalid-feedback">El resum no pot estar buit!</div>@enderror 

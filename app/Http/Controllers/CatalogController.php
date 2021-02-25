@@ -6,13 +6,23 @@ use Illuminate\Http\Request;
 use App\Models\Movie;
 use App\Models\Review;
 use App\Models\User;
+use App\Models\Category;
 use Illuminate\Support\Facades\Auth;
 
 class CatalogController extends Controller
 {
-    public function getIndex(){
-		$lespelis = Movie::all();
-        return view('catalog.index')->with('lespelis',$lespelis);
+    public function getIndex(Request $request){
+        $cercapeli = $request->input("cerca");
+        $cercacategories = $request->input("category_id");
+        $categories = Category::all();
+        if($cercapeli){
+            $lespelis = Movie::where('title', 'like', '%'.$cercapeli.'%')->orWhere('director', 'like', '%'.$cercapeli.'%')->get();
+        }elseif($cercacategories){
+            $lespelis = Movie::where('category_id', $cercacategories)->get();
+        }else{
+            $lespelis = Movie::all();
+        }
+        return view('catalog.index')->with('lespelis',$lespelis)->with('categories',$categories);
     }
     public function getShow(Request $request, $id){
         $lespelis1 = Movie::findOrFail($id);
@@ -20,11 +30,13 @@ class CatalogController extends Controller
         return view('catalog.show')->with('lespelis1',$lespelis1)->with('revi',$revi);
     }
     public function getCreate(){
-        return view('catalog.create');
+        $categories = Category::all();
+        return view('catalog.create')->with('categories',$categories);
     }
     public function getEdit($id){
+        $categories = Category::all();
         $lespelis2 = Movie::findOrFail($id);
-        return view('catalog.edit')->with('lespelis2',$lespelis2);
+        return view('catalog.edit')->with('lespelis2',$lespelis2)->with('categories',$categories);
     }
     public function postCreate(Request $request){
         $muvi = new Movie;
@@ -34,6 +46,7 @@ class CatalogController extends Controller
         $muvi->director = $validated['director'];
         $muvi->poster = $validated['post'];
         $muvi->synopsis = $validated['synopsis'];
+        $muvi->category_id = $validated['category_id'];
         $muvi->save();
         notify()->success('Pel·lícula creada, aquesta es una mica merdeta!');
         return redirect('/catalog');
@@ -46,6 +59,7 @@ class CatalogController extends Controller
         $muvi->director=$validated['director'];
         $muvi->poster=$validated['post'];
         $muvi->synopsis=$validated['synopsis'];
+        $muvi->category_id = $validated['category_id'];
         $muvi->save();
         notify()->success('Pel·lícula editada, espero que no hi hagin errors!');
         return redirect('/catalog/show/'.$request->id);
@@ -87,6 +101,7 @@ class CatalogController extends Controller
             "director" => "required",
             "post" => "required",
             "synopsis" => "required",
+            "category_id" => "required",
         ]);
     }
     public function validateReview(Request $request) {

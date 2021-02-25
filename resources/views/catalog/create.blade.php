@@ -38,6 +38,17 @@
             </div>
 
             <div class="form-group">
+               <label for="synopsis">Categoria</label>
+               <select id="inputState" class="form-control" name="category_id">
+                  <option selected>Escull una categoria...</option>
+                  @foreach($categories as $cate)
+                  <option value="{{$cate->id}}">{{$cate->title}}</option>
+                  @endforeach
+               </select>
+               @error('category_id')<div id="tascaFeedback" class="invalid-feedback">La categoria no pot estar buit!</div>@enderror 
+            </div>
+
+            <div class="form-group">
                <label for="synopsis">Resum</label>
                <textarea name="synopsis" id="synopsis" class="form-control @error('synopsis') is-invalid @enderror" placeholder="Afegir synopsis"
                rows="3"></textarea> 
