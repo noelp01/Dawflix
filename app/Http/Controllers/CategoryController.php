@@ -59,6 +59,6 @@ class CategoryController extends Controller
           "title" => "required",
           "description" => "required",
           "adult" =>  "required"
-          ]);
+      ]);
   }
 }
