@@ -17,8 +17,8 @@ class CategoriesTodas
      */
     public function handle(Request $request, Closure $next)
     {
-        $categories = Category::all();
-        view()->share('categories', $categories);
+        $categor = Category::all();
+        view()->share('categor', $categor);
         return $next($request);
     }
 }
